@@ -177,3 +177,60 @@
     gap: 12px;
   }
 }
+@media (max-width: 767px) {
+  .task-progress {
+    gap: 9px;
+    padding: 15px 16px;
+    margin-bottom: 26px;
+  }
+
+  .task-manager__heading {
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }
+
+  .task-manager__title {
+    font-size: 18px;
+  }
+
+  .task-manager__description {
+    max-width: 34ch;
+    font-size: 13px;
+  }
+
+  .task-manager__count {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .task-manager__toolbar {
+    max-width: 100%;
+    overflow-x: auto;
+    margin-bottom: 12px;
+  }
+
+  .task-snackbar {
+    bottom: calc(76px + env(safe-area-inset-bottom));
+    width: calc(100vw - 28px);
+    min-width: 0;
+    max-width: 440px;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 14px;
+  }
+}
+
+@media (max-width: 380px) {
+  .task-progress {
+    padding: 13px;
+  }
+
+  .task-manager__heading {
+    gap: 8px;
+  }
+
+  .task-manager__count {
+    padding: 5px 7px;
+    font-size: 11px;
+  }
+}

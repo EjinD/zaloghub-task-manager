@@ -40,3 +40,40 @@
   color: var(--color-text);
   background: var(--color-card-hover);
 }
+
+@media (max-width: 767px) {
+  .header {
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 26px;
+  }
+
+  .header__title {
+    font-size: clamp(22px, 5vw, 26px);
+  }
+
+  .header__description {
+    max-width: 34ch;
+    font-size: 13px;
+  }
+
+  .header__actions {
+    gap: 6px;
+  }
+
+  .header__icon-button {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 380px) {
+  .header__actions {
+    gap: 4px;
+  }
+
+  .header__icon-button {
+    width: 32px;
+    height: 32px;
+  }
+}

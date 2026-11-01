@@ -43,3 +43,9 @@ input:focus-visible {
   background: var(--color-primary);
   color: white;
 }
+
+@media (max-width: 767px) {
+  body {
+    overflow-x: hidden;
+  }
+}

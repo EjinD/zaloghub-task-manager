@@ -29,3 +29,17 @@
   color: var(--color-primary);
   background: var(--color-primary-soft);
 }
+
+@media (max-width: 480px) {
+  .task-filters {
+    width: max-content;
+    max-width: 100%;
+    gap: 2px;
+  }
+
+  .task-filters__button {
+    padding: 8px 10px;
+    white-space: nowrap;
+    font-size: 12px;
+  }
+}

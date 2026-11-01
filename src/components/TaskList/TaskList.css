@@ -40,3 +40,14 @@
   color: var(--color-text-secondary);
   font-size: var(--font-size-sm);
 }
+
+@media (max-width: 767px) {
+  .task-list {
+    gap: 8px;
+  }
+
+  .task-list__empty {
+    min-height: 210px;
+    padding: 24px 16px;
+  }
+}

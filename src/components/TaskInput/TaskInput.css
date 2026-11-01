@@ -55,3 +55,29 @@
     display: none;
   }
 }
+
+@media (max-width: 767px) {
+  .task-input {
+    gap: 6px;
+    padding: 6px;
+    margin-bottom: 18px;
+  }
+
+  .task-input__field {
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+
+  .task-input__button {
+    flex-shrink: 0;
+    gap: 6px;
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 380px) {
+  .task-input__button {
+    padding: 10px;
+  }
+}

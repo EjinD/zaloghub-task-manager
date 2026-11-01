@@ -75,3 +75,46 @@
     padding: 16px;
   }
 }
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  .task-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .task-stats__card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 767px) {
+  .task-stats {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+
+  .task-stats__card {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  .task-stats__top {
+    flex: 1;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  .task-stats__icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .task-stats__value {
+    font-size: 24px;
+  }
+}
