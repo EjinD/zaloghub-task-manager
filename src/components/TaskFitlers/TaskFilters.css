@@ -1,0 +1,31 @@
+
+.task-filters {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.task-filters__button {
+  padding: 8px 14px;
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.task-filters__button:hover {
+  color: var(--color-text);
+  background: var(--color-card-hover);
+}
+
+.task-filters__button--active {
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
+}

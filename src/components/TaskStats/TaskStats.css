@@ -1,0 +1,77 @@
+
+.task-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 32px;
+}
+
+.task-stats__card {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 22px;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+}
+
+.task-stats__card:hover {
+  background: var(--color-card-hover);
+  transform: translateY(-2px);
+}
+
+.task-stats__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.task-stats__label {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.task-stats__icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+}
+
+.task-stats__value {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.task-stats__card--primary .task-stats__icon {
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
+}
+
+.task-stats__card--warning .task-stats__icon {
+  color: var(--color-warning);
+  background: rgba(243, 185, 95, 0.12);
+}
+
+.task-stats__card--success .task-stats__icon {
+  color: var(--color-success);
+  background: rgba(54, 201, 143, 0.12);
+}
+
+@media (max-width: 768px) {
+  .task-stats {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .task-stats__card {
+    gap: 12px;
+    padding: 16px;
+  }
+}
