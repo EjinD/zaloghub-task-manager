@@ -10,12 +10,14 @@ type TaskListProps = {
   tasks: Task[];
   onToggle: (id: string) => void;
   onDelete: (id: string) => void;
+  onUpdate: (id: string, title: string) => void;
 };
 
 export function TaskList({
   tasks,
   onToggle,
   onDelete,
+  onUpdate
 }: TaskListProps) {
   if (tasks.length === 0) {
     return (
@@ -43,6 +45,7 @@ export function TaskList({
           task={task}
           onToggle={onToggle}
           onDelete={onDelete}
+          onUpdate={onUpdate}
         />
       ))}
     </div>

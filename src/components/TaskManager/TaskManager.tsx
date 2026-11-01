@@ -17,6 +17,7 @@ type TaskManagerProps = {
   onFilterChange: (filter: TaskFilter) => void;
   onToggle: (id: string) => void;
   onDelete: (id: string) => void;
+  onUpdate: (id: string, title: string) => void;
 };
 
 export function TaskManager({
@@ -26,6 +27,7 @@ export function TaskManager({
   onFilterChange,
   onToggle,
   onDelete,
+  onUpdate
 }: TaskManagerProps) {
   const completedCount = tasks.filter(
     (task) => task.completed,
@@ -80,6 +82,7 @@ export function TaskManager({
         tasks={filteredTasks}
         onToggle={onToggle}
         onDelete={onDelete}
+        onUpdate={onUpdate}
       />
     </section>
   );

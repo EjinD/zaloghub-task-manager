@@ -3,38 +3,21 @@ import { Sidebar } from '../components/Sidebar/Sidebar';
 import { Header } from '../components/Header/Header';
 import { TaskManager } from '../components/TaskManager/TaskManager';
 
-import type { Task } from '../types/task';
+import { useTasks } from '../hooks/useTasks';
 
 import './App.css';
 
-const mockTasks: Task[] = [
-  {
-    id: '1',
-    title: 'Complete the dashboard interface',
-    completed: true,
-    createdAt: Date.now() - 86400000,
-  },
-  {
-    id: '2',
-    title: 'Implement task management logic',
-    completed: false,
-    createdAt: Date.now(),
-  },
-  {
-    id: '3',
-    title: 'Configure localStorage',
-    completed: false,
-    createdAt: Date.now(),
-  },
-  {
-    id: '4',
-    title: 'Write unit tests',
-    completed: true,
-    createdAt: Date.now() - 172800000,
-  },
-];
-
 export function App() {
+  const {
+    tasks,
+    activeFilter,
+    addTask,
+    deleteTask,
+    toggleTask,
+    updateTask,
+    setFilter,
+  } = useTasks();
+
   return (
     <div className="app">
       <Sidebar />
@@ -47,12 +30,13 @@ export function App() {
           />
 
           <TaskManager
-            tasks={mockTasks}
-            activeFilter="all"
-            onAdd={() => {}}
-            onFilterChange={() => {}}
-            onToggle={() => {}}
-            onDelete={() => {}}
+            tasks={tasks}
+            activeFilter={activeFilter}
+            onAdd={addTask}
+            onFilterChange={setFilter}
+            onToggle={toggleTask}
+            onDelete={deleteTask}
+            onUpdate={updateTask}
           />
         </div>
       </main>
