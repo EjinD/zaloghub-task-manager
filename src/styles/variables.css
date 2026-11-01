@@ -1,0 +1,41 @@
+
+:root {
+  /* BG */
+  --color-bg: #0b0d12;
+  --color-surface: #11141b;
+  --color-card: #171b24;
+  --color-card-hover: #1d2230;
+
+  /* Borders */
+  --color-border: #252a36;
+
+  /* Text */
+  --color-text: #f1f2f6;
+  --color-text-secondary: #858b9b;
+  --color-text-muted: #5d6473;
+
+  /* Accent */
+  --color-primary: #8b7cff;
+  --color-primary-hover: #a094ff;
+  --color-primary-soft: rgba(139, 124, 255, 0.12);
+
+  /* Status */
+  --color-success: #36c98f;
+  --color-danger: #f16c75;
+  --color-warning: #f3b95f;
+
+  /* Typography */
+  --font-family: 'Inter', sans-serif;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+
+  /* Shadows */
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.15);
+
+  /* Transitions */
+  --transition: 180ms ease;
+}
