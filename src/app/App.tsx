@@ -16,6 +16,8 @@ export function App() {
     toggleTask,
     updateTask,
     setFilter,
+    recentlyDeletedTask,
+    undoDelete
   } = useTasks();
 
   return (
@@ -37,6 +39,8 @@ export function App() {
             onToggle={toggleTask}
             onDelete={deleteTask}
             onUpdate={updateTask}
+            recentlyDeletedTask={recentlyDeletedTask}
+            onUndoDelete={undoDelete}
           />
         </div>
       </main>

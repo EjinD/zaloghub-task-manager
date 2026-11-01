@@ -1,8 +1,13 @@
-import { useEffect, useReducer } from 'react';
+import { useEffect, useReducer, useRef, useState } from 'react';
 
 import type { Task } from '../types/task';
 import { initialTaskState, taskReducer } from '../reducers/taskReducer';
 import { loadTasks, saveTasks } from '../utils/storage';
+
+export type DeletedTask = {
+  task: Task;
+  index: number;
+};
 
 function initializeTasks() {
   return {
@@ -11,12 +16,26 @@ function initializeTasks() {
   };
 }
 
+
 export function useTasks() {
   const [state, dispatch] = useReducer(taskReducer, undefined, initializeTasks);
+
+  const [recentlyDeletedTask, setRecentlyDeletedTask] =
+    useState<DeletedTask | null>(null);
+
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     saveTasks(state.tasks);
   }, [state.tasks]);
+
+  useEffect(() => {
+  return () => {
+    if (timerRef.current !== null) {
+      clearTimeout(timerRef.current);
+    }
+  };
+}, []);
 
   function addTask(title: string) {
     const trimmedTitle = title.trim();
@@ -33,7 +52,43 @@ export function useTasks() {
   }
 
   function deleteTask(id: string) {
+    const index = state.tasks.findIndex((task) => task.id === id);
+
+    if (index === -1) return;
+
+    const deletedTask = state.tasks[index];
+
+    if (timerRef.current !== null) {
+      clearTimeout(timerRef.current);
+    }
+
     dispatch({ type: 'DELETE_TASK', payload: id });
+
+    setRecentlyDeletedTask({
+      task: deletedTask,
+      index,
+    });
+
+    timerRef.current = setTimeout(() => {
+      setRecentlyDeletedTask(null);
+      timerRef.current = null;
+    }, 5000);
+  }
+
+    function undoDelete() {
+    if (!recentlyDeletedTask) return;
+
+    if (timerRef.current !== null) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+
+    dispatch({
+      type: 'RESTORE_TASK',
+      payload: recentlyDeletedTask,
+    });
+
+    setRecentlyDeletedTask(null);
   }
 
   function toggleTask(id: string) {
@@ -59,5 +114,7 @@ export function useTasks() {
     toggleTask,
     updateTask,
     setFilter,
+    recentlyDeletedTask,
+    undoDelete,
   };
 }

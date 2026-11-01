@@ -1,7 +1,7 @@
 
 import { ClipboardList } from 'lucide-react';
 
-import type { Task } from '../../types/task';
+import type { Task, TaskFilter } from '../../types/task';
 import { TaskItem } from '../TaskItem/TaskItem';
 
 import './TaskList.css';
@@ -11,14 +11,36 @@ type TaskListProps = {
   onToggle: (id: string) => void;
   onDelete: (id: string) => void;
   onUpdate: (id: string, title: string) => void;
+  filter: TaskFilter;
+};
+
+const emptyStateContent: Record<
+  TaskFilter,
+  { title: string; description: string }
+> = {
+  all: {
+    title: 'No tasks yet',
+    description: 'Create your first task and start being productive.',
+  },
+  active: {
+    title: 'All caught up!',
+    description: 'You have completed all your tasks. Great job!',
+  },
+  completed: {
+    title: 'Nothing completed yet',
+    description: 'Complete your first task to see it here.',
+  },
 };
 
 export function TaskList({
   tasks,
+  filter,
   onToggle,
   onDelete,
-  onUpdate
+  onUpdate,
 }: TaskListProps) {
+  const emptyState = emptyStateContent[filter];
+
   if (tasks.length === 0) {
     return (
       <div className="task-list__empty">
@@ -27,11 +49,11 @@ export function TaskList({
         </div>
 
         <h3 className="task-list__empty-title">
-          No tasks found
+          {emptyState.title}
         </h3>
 
         <p className="task-list__empty-description">
-          Your task list is empty. Add a new task to get started.
+          {emptyState.description}
         </p>
       </div>
     );

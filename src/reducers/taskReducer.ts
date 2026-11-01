@@ -1,4 +1,3 @@
-
 import type { Task, TaskFilter } from '../types/task';
 
 export type TaskState = {
@@ -10,6 +9,12 @@ export type TaskAction =
   | { type: 'ADD_TASK'; payload: Task }
   | { type: 'DELETE_TASK'; payload: string }
   | { type: 'TOGGLE_TASK'; payload: string }
+  | { type: 'RESTORE_TASK';
+    payload: {
+      task: Task;
+      index: number;
+    }
+  }
   | {
       type: 'UPDATE_TASK';
       payload: { id: string; title: string };
@@ -59,6 +64,18 @@ export function taskReducer(
             : task,
         ),
       };
+      case 'RESTORE_TASK': {
+        const { task, index } = action.payload;
+
+        const updatedTasks = [...state.tasks];
+
+        updatedTasks.splice(index, 0, task);
+
+        return {
+          ...state,
+          tasks: updatedTasks,
+        };
+      }
 
     case 'SET_FILTER':
       return {
